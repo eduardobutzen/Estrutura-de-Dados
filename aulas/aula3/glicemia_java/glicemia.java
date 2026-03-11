@@ -1,4 +1,4 @@
-package aulas.aula3;
+package aulas.aula3.glicemia_java;
 
 public class glicemia {
 

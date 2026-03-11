@@ -1,4 +1,4 @@
-package aulas.aula3;
+package aulas.aula3.glicemia_java;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -10,18 +10,15 @@ public class principal {
         Scanner teclado = new Scanner(System.in);
         
         ArrayList<glicemia> lista = new ArrayList<>();
-
         
-       
-
-        //alternativa 1
+        //inserir na lista - alternativa 1
          glicemia obj = new glicemia(191, "11/03/2026", "08:00");
          lista.add(obj);
 
-        //alternativa 2
+        //inserir na lista - alternativa 2
         lista.add (new glicemia(191, "11/03/2026", "08:00"));
 
-        //alternativa 3
+        //inserir na lista - alternativa 3
         int valor;
         String data, hora;
         for (int i = 0; i < 3; i++) {
@@ -40,9 +37,13 @@ public class principal {
         
             System.out.println(lista.get(i).valor + " - " + lista.get(i).data + " - " + lista.get(i).hora);
 
-        }   
+        }
 
-
+        //exibit lista - alternativa 2
+        for(glicemia item : lista) {
+            System.out.println(item.valor + " - " + item.data + " - " + item.hora);
+        }
+        
 
         teclado.close();
     }
