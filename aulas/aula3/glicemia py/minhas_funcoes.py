@@ -1,24 +1,31 @@
-from glicemia import Glicemia, glicemia
+from glicemia import Glicemia
+
 
 def popular_lista_arquivo(lista, nome_base):
 
-    lista = []
-    vetor_linha = linha.split(";")
-    obj = glicemia(int(vetor_linha[0],vetor_linha[1],vetor_linha[2]))
     leitor = open(nome_base, "r", encoding="utf-8")
 
-    if obj in lista:
+    for linha in leitor:
+
+        linha = linha.strip()
+        vetor_linha = linha.split(",")
+
+        valor = int(vetor_linha[0])
+        data = vetor_linha[1]
+        hora = vetor_linha[2]
+
+        obj = Glicemia(valor, data, hora)
+
         lista.append(obj)
 
     leitor.close()
 
-    return lista
 
 def imprimir_lista(lista):
-    for item in lista:
-        print(item.glicemia)
 
-        print ("Valor: " + str(item.valor))
+    for item in lista:
+        print(item)
+
 
 def calcular_media(lista):
 
@@ -31,5 +38,21 @@ def calcular_media(lista):
 
     return media
 
+
 def calcular_mediana(lista):
-    lista.sort()
+
+    valores = []
+
+    for item in lista:
+        valores.append(item.valor)
+
+    valores.sort()
+
+    n = len(valores)
+
+    if n % 2 == 0:
+        mediana = (valores[n//2 - 1] + valores[n//2]) / 2
+    else:
+        mediana = valores[n//2]
+
+    return mediana
